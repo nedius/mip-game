@@ -7,3 +7,6 @@ class game_state:
         
     def set_num_array(self, num_array):
         self.num_array = num_array
+        
+    def get_num_array(self):
+        return self.num_array
