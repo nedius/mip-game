@@ -6,4 +6,4 @@ is_player_starts = utils.get_choice_from_user("Does the player start first? (Y/n
 
 g = game(array_length, player_starts=is_player_starts)
 
-g.start_game(player_starts=is_player_starts)
+g.start_game()
