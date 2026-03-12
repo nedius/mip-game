@@ -7,6 +7,17 @@ A simple two-player, turn-based number game. The program generates a random sequ
 
 - Python 3.8 or newer
 
+## Install dependencies
+
+- Optional: create and activate a virtual environment.
+  - Windows: `python -m venv venv` then `venv\Scripts\activate`
+
+- Install required Python packages:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Run
 
 - Start the game with:
