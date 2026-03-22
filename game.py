@@ -28,7 +28,7 @@ class game:
             max_pair_number = len(self.__state.get_num_array()) // 2 + (1 if len(self.__state.get_num_array()) % 2 != 0 else 0)
             pair_number = utils.get_number_from_user(f"Enter the number of the pair to remove (1 - {max_pair_number}): ", min_value=1, max_value=max_pair_number)
             
-            if pair_number == max_pair_number:
+            if pair_number == max_pair_number and len(self.__state.get_num_array()) % 2 != 0:
                 # if the last pair has only one number and player chooses it, remove it and decrease computer score by 1
                 self.__state.remove_last()
                 self.__state.second_player_score -= 1
