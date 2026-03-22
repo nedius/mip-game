@@ -2,7 +2,9 @@ import customtkinter as ctk
 from PIL import Image #Pillow library for image handling
 import game
 
+
 class Frontend(ctk.CTk):
+    
     def __init__(self):
         super().__init__()
 
@@ -34,15 +36,12 @@ class Frontend(ctk.CTk):
                                     height=20,)
         self.slider.grid(row=5, column=0, padx=80, pady=5, sticky="ew")
 
-
-
         self.grid_columnconfigure(0, weight=1)  # Make the column expand to fill the window
 
         self.diapason_entry.bind("<Return>", self.validate_entry)  # Bind the Enter key to validate the entry
 
-
     def on_button_click(self):
-        self.label.configure(text="Button Clicked!")
+        self.configure(text="Button Clicked!")
 
     def on_diapason_entry(self, event):
         diapason = self.diapason_entry.get()
