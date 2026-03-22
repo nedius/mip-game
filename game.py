@@ -21,7 +21,7 @@ class game:
         print(f"{'Player' if self.__state.is_player_move else 'Computer'}'s turn.")
         print(f'Current scores - Player: {self.__state.first_player_score}, Computer: {self.__state.second_player_score}')
         # print(f"Current array: {self.__state.get_num_array()}")
-        print(f"Current array: ")
+        print("Current array: ")
         self.print_state()
         
         if self.__state.is_player_move:
