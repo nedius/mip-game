@@ -14,10 +14,9 @@ class game_state:
     def sum_pair(self, pair_number):
         index = (pair_number - 1) * 2
 
-        if index < 1 or index >= len(self.num_array):
+        if index + 1 >= len(self.num_array):
             raise IndexError("Index out of bounds for summing pair.")
-        
-        pair_sum = self.num_array[index - 1] + self.num_array[index]
+        pair_sum = self.num_array[index] + self.num_array[index + 1]
 
         if pair_sum > 6:
             pair_sum -= 6
