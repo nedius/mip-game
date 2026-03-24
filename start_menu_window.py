@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from PIL import Image #Pillow library for image handling
 from game_window import GameWindow
+from utils import num_array
 
 
 class StartMenuWindow(ctk.CTk):
@@ -11,11 +12,6 @@ class StartMenuWindow(ctk.CTk):
         self.create_widgets()
     
     #Function that will use GUI
-
-    def on_diapason_entry(self, event):
-        diapason = self.diapason_entry.get()
-        # Validate the input and start the game with the given diapason
-        # You can add your game logic here to handle the diapason input
 
     def player_start_first(self):
         pass
@@ -42,10 +38,11 @@ class StartMenuWindow(ctk.CTk):
             self.diapason_entry.insert(0, str(self.slider_var.get()))
 
     def start(self):
-
+        diapason=self.diapason_entry.get()
+        game_number_array = num_array(int(diapason))
         self.withdraw()
 
-        self.game_view=GameWindow(master=self)
+        self.game_view=GameWindow(self, game_number_array)
         self.game_view.lift()#in first layer      
 
     #Game window setup
