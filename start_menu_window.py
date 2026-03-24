@@ -3,7 +3,7 @@ from PIL import Image #Pillow library for image handling
 from game_window import GameWindow
 
 
-class Frontend(ctk.CTk):
+class StartMenuWindow(ctk.CTk):
 
     def on_diapason_entry(self, event):
         diapason = self.diapason_entry.get()
@@ -81,5 +81,5 @@ class Frontend(ctk.CTk):
 
 
 if __name__ == "__main__":
-    app = Frontend()
+    app = StartMenuWindow()
     app.mainloop()
