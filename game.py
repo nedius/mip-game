@@ -43,10 +43,13 @@ class game:
         else:
             best_move = aiLogic.get_best_move(self.__state, depth=3)
 
-            if best_move is not None:
-                self.__state = moves.apply_move(self.__state, best_move)
-                print(f"Computer chose: {best_move}")
-            
+            if best_move is None:
+                print("Computer has no legal moves.")
+                self.end_game()
+                return
+                
+            self.__state = moves.apply_move(self.__state, best_move)
+            print(f"Computer chose: {best_move}")
             
         self.turn()
         return
