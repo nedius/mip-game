@@ -15,7 +15,13 @@ class StartMenuWindow(ctk.CTk):
 
     def player_start_first(self):
         pass
+
+    def minmax_algorithm(self):
+        pass
     
+    def btn_alfa_beta_algorithm(self):
+        pass
+
     def update_entry(self, value):
         current_value=str(int(value))
         self.diapason_entry.delete(0, ctk.END)
@@ -26,7 +32,7 @@ class StartMenuWindow(ctk.CTk):
 
         if not check_value:
             return
-        
+
         try:
             num_value=int(check_value)
             if 15<=num_value<=25:
@@ -52,7 +58,7 @@ class StartMenuWindow(ctk.CTk):
     def setup_config(self):
         
         self.title("mip-game")
-        self.geometry("300x300")
+        self.geometry("300x370")
         self.resizable(False, False)  #Disable window resizing
     
         self.slider_var = ctk.IntVar(value="20")
@@ -94,6 +100,18 @@ class StartMenuWindow(ctk.CTk):
                                 onvalue="on",
                                 offvalue="off")
         self.check_box.grid(row=6, column=0, pady=15)
+
+        self.btn_minimax = ctk.CTkButton(
+                                        self,
+                                        text="Minimax algorithm",
+                                        command=self.minmax_algorithm)
+        self.btn_minimax.grid(row=7, column=0, padx=80, pady=5, sticky="ew")
+
+        self.btn_alfa_beta = ctk.CTkButton(
+                                        self,
+                                        text="Alfa-Beta algorithm",
+                                        command=self.btn_alfa_beta_algorithm)
+        self.btn_alfa_beta.grid(row=8, column=0, padx=80, pady=5)
 
         self.grid_columnconfigure(0, weight=1)  # Make the column expand to fill the window
         
