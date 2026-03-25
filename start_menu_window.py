@@ -17,7 +17,9 @@ class StartMenuWindow(ctk.CTk):
         pass
     
     def update_entry(self, value):
-        self.slider_var.set(str(int(float(value)))) # Update the entry field with the slider value, converting it to an integer and then to a string
+        current_value=str(int(value))
+        self.diapason_entry.delete(0, ctk.END)
+        self.diapason_entry.insert(0, current_value)
 
     def validate_entry(self, event):
         check_value = self.diapason_entry.get()
@@ -72,12 +74,12 @@ class StartMenuWindow(ctk.CTk):
         self.diapason_entry.grid(row=4, column=0, padx=20, pady=10, sticky="ns")
         self.diapason_entry.insert(0, "20")
 
-        # self.slider_var=ctk.IntVar(value=20)
         self.slider = ctk.CTkSlider(self, 
                                     from_=15, 
                                     to=25,
                                     number_of_steps=10, #How many discrete steps the slider should have
                                     variable=self.slider_var,
+                                    command=self.update_entry,
                                     height=20,)
         self.slider.grid(row=5, column=0, padx=80, pady=5, sticky="ew")
 
