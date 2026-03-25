@@ -96,10 +96,7 @@ class StartMenuWindow(ctk.CTk):
         self.check_box.grid(row=6, column=0, pady=15)
 
         self.grid_columnconfigure(0, weight=1)  # Make the column expand to fill the window
-
-
         
-
 if __name__ == "__main__":
     app = StartMenuWindow()
     app.mainloop()
