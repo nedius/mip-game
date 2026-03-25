@@ -1,5 +1,8 @@
 import utils
+import moves
 from state import game_state
+
+
 class game:
     def __init__(self, diapason, player_starts=True):
         self.__state = game_state()
@@ -14,13 +17,12 @@ class game:
     def turn(self):
         print("\n" + "="*20)
         
-        if len(self.__state.get_num_array()) == 1:
+        if moves.is_terminal(self.__state):
             self.end_game()
             return
         
         print(f"{'Player' if self.__state.is_player_move else 'Computer'}'s turn.")
         print(f'Current scores - Player: {self.__state.first_player_score}, Computer: {self.__state.second_player_score}')
-        # print(f"Current array: {self.__state.get_num_array()}")
         print("Current array: ")
         self.print_state()
         
@@ -28,14 +30,16 @@ class game:
             max_pair_number = len(self.__state.get_num_array()) // 2 + (1 if len(self.__state.get_num_array()) % 2 != 0 else 0)
             pair_number = utils.get_number_from_user(f"Enter the number of the pair to remove (1 - {max_pair_number}): ", min_value=1, max_value=max_pair_number)
             
-            if pair_number == max_pair_number and len(self.__state.get_num_array()) % 2 != 0:
-                # if the last pair has only one number and player chooses it, remove it and decrease computer score by 1
-                self.__state.remove_last()
-                self.__state.second_player_score -= 1
+            num_array = self.__state.get_num_array()
+            
+            if len(num_array) % 2 != 0 and pair_number == max_pair_number:
+                move = (moves.MoveType.REMOVE_LAST, None)
             else:
-                # sum the chosen pair and increase player score by 1
-                self.__state.sum_pair(pair_number)
-                self.__state.first_player_score += 1
+                move = (moves.MoveType.SUM_PAIR, pair_number)
+            
+            if moves.is_allowed_move(self.__state, move):
+                self.__state = moves.apply_move(self.__state, move)
+
         else:
             # TODO: implement computer's ai logic here
             
