@@ -1,3 +1,4 @@
+import aiLogic
 import utils
 import moves
 from state import game_state
@@ -33,31 +34,20 @@ class game:
             num_array = self.__state.get_num_array()
             
             if len(num_array) % 2 != 0 and pair_number == max_pair_number:
-                move = (moves.MoveType.REMOVE_LAST, None)
+                move = (moves.REMOVE_LAST, None)
             else:
-                move = (moves.MoveType.SUM_PAIR, pair_number)
+                move = (moves.SUM_PAIR, pair_number)
             
-            if moves.is_allowed_move(self.__state, move):
-                self.__state = moves.apply_move(self.__state, move)
+            self.__state = moves.apply_move(self.__state, move)
 
         else:
-            # TODO: implement computer's ai logic here
+            best_move = aiLogic.get_best_move(self.__state, depth=3)
+
+            if best_move is not None:
+                self.__state = moves.apply_move(self.__state, best_move)
+                print(f"Computer chose: {best_move}")
             
-            # Computer's move logic here
-            # For simplicity, let's just remove the last element of the array for the computer's move if possible
-            # else sum first pair
-            if len(self.__state.get_num_array()) % 2 != 0:
-                # if the last pair has only one number, remove it and decrease player score by 1
-                self.__state.remove_last()
-                self.__state.first_player_score -= 1
-                print("Computer removed the last number and decreased player's score by 1.")
-            else:
-                # sum the first pair and increase computer score by 1
-                self.__state.sum_pair(1)
-                self.__state.second_player_score += 1
-                print(f"Computer summed the {1} pair and increased its score by 1.")
-                
-        self.__state.is_player_move = not self.__state.is_player_move
+            
         self.turn()
         return
     

@@ -3,7 +3,7 @@ import moves
 
 
 class TreeNode:
-    def __init__(self, state, move):
+    def __init__(self, state, move=None):
         self.state = state
         self.move = move
         self.children = []

@@ -16,6 +16,10 @@ def get_legal_moves(state):
         
     if len(num_array) % 2 != 0:
         moves.append((REMOVE_LAST, None))
+    
+    return moves
+        
+    
         
 def is_allowed_move(state, move):
     if is_terminal(state):
@@ -38,7 +42,7 @@ def is_allowed_move(state, move):
 
 def apply_move(state, move):
     if not is_allowed_move(state, move):
-        raise ValueError(f"Ileegal move : {move}")
+        raise ValueError(f"Illegal move : {move}")
     
     new_state = deepcopy(state)
     move_type, value = move
@@ -52,7 +56,7 @@ def apply_move(state, move):
             new_state.second_player_score +=1
             
     elif move_type == REMOVE_LAST:
-        new_state.remove_last(value)
+        new_state.remove_last()
         
         if state.is_player_move:
             new_state.second_player_score -=1
@@ -65,5 +69,5 @@ def apply_move(state, move):
 def generate_next_states(state):
     return [apply_move(state, move) for move in get_legal_moves(state)]
 
-def generate_next_state_with_moves(state):
+def generate_next_states_with_moves(state):
     return [(move, apply_move(state, move)) for move in get_legal_moves(state)]
