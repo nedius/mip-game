@@ -19,11 +19,23 @@ def state_key(state):
 
 
 def generate_next_states(state):
-    return [moves.apply_move(state, move) for move in moves.get_legal_moves(state)]
+    next_states = []
+
+    for move in moves.get_legal_moves(state):
+        new_state = moves.apply_move(state, move)
+        next_states.append(new_state)
+
+    return next_states
 
 
 def generate_next_states_with_moves(state):
-    return [(move, moves.apply_move(state, move)) for move in moves.get_legal_moves(state)]
+    next_states_with_moves = []
+
+    for move in moves.get_legal_moves(state):
+        new_state = moves.apply_move(state, move)
+        next_states_with_moves.append((move, new_state))
+
+    return next_states_with_moves
 
 
 def build_tree(state, depth=3, visited=None):
