@@ -337,7 +337,7 @@ class GameWindow(ctk.CTkToplevel):
 
     def _build_static_widgets(self):
         self.title("Game Window")
-        self.geometry("1100x640")
+        self.geometry("1250x640")
         self.resizable(False, False)
 
         algo_name = "Alpha-Beta" if self.__algorithm == ALGO_ALPHABETA else "Minimax"
