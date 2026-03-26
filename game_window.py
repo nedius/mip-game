@@ -275,7 +275,7 @@ class GameWindow(ctk.CTkToplevel):
 
             sq = ctk.CTkFrame(
                 master=parent if parent else self._grid_frame,
-                width=size, height=size, corner_radius=7, fg_color=color)
+                width=size, height=size, corner_radius=7, fg_color=color, cursor="hand2")
             sq.grid(row=grid_row, column=index, padx=2, pady=2)
             sq.grid_propagate(False)
 
