@@ -20,13 +20,25 @@ pip install -r requirements.txt
 
 ## Run
 
-- Start the game with:
+There are two ways to run the game:
+
+1. Command-line interface (CLI)
 
 ```bash
 python main.py
 ```
 
-Entry point: main.py
+2. Graphical interface (GUI)
+
+```bash
+python start_menu_window.py
+```
+
+Prerequisites: install dependencies listed in `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## How To Play
 
